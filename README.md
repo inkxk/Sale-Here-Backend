@@ -1,11 +1,15 @@
-# Sale Here - Backend Developer Interview Question
+# Proxumer - Backend Developer Interview Question
 
 Task: GraphQL-powered Chatroom
 
-## Description
-​Please create a chatroom API using GraphQL. You may use the following schema as your guidelines: 
+### Time limit: 3 hours
 
-```
+## Description
+
+​ Please create a chatroom API using GraphQL. You may use the following schema
+as your guidelines: ​
+
+```graphql
 // Message
 type Message {
   id: String!
@@ -41,12 +45,14 @@ type Sender {
 }
 ```
 
+​ (Note: Feel free to modify/expand the schema as you see fit) ​ Requirement: ​
 
-(Note: Feel free to modify/expand the schema as you see fit) ​ Requirement: ​
-
-- You must utilize MongoDB for storing data, but we won't grade you on schema design
-- You must include unit tests, with as much code coverage as possible (ie. common edge cases) ​ Evaluation: ​
-- We will test your service against our MongoDB-backed mock data, so please make sure that your service can properly communicate with a MongoDB server
+- You **must** utilize MongoDB for storing data, but we won't grade you on
+  schema design
+- You **must** include unit tests, with as much code coverage as possible (ie.
+  common edge cases) ​ Evaluation: ​
+- We will test your service against our MongoDB-backed mock data, so please make
+  sure that your service can properly communicate with a MongoDB server
 - All required features (as listed in the schema) must be bug-free
 - (Bonus) build a Docker image and deploy it on Docker Hub
 - (Bonus) utilize GraphQL subscription to notify users of new messages

@@ -1,0 +1,22 @@
+type Message {
+  id: String!
+  body: String!
+  image: String
+  from: Sender!
+}
+
+type VoidResponse {
+  successful: Boolean
+}
+
+type Query {
+  messages(roomName: String!): [Message]
+}
+
+type Mutation {
+  sendMessage(roomName: String!, message: String!): VoidResponse
+}
+
+type Subscription {
+  newMessage(roomName: String!): Message!
+}
