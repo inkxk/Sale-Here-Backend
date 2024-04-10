@@ -1,10 +1,10 @@
-import set from 'lodash/set';
-import get from 'lodash/get';
-import uuid from 'uuid/v1';
+const set = require('lodash/set');
+const get = require('lodash/get');
+const uuid = require('uuid/v1');
 
-import mock from '../../mock';
+const mock = require('../../mock');
 
-export default {
+const messagesResolvers = {
   Query: {
     messages: (parent, { roomName }) => {
       const msgs = get(mock, `rooms.${roomName}.messages`, []);
@@ -25,3 +25,7 @@ export default {
     }
   }
 };
+
+module.exports = {
+  messagesResolvers
+}

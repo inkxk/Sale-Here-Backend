@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   rooms: {
     room1: {
       messages: [
