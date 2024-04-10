@@ -4,7 +4,7 @@ const uuid = require('uuid/v4');
 
 const mock = require('../../mock');
 
-const messagesResolvers = {
+const resolvers = {
   Query: {
     messages: (parent, { roomName }) => {
       const msgs = get(mock, `rooms.${roomName}.messages`, []);
@@ -27,5 +27,5 @@ const messagesResolvers = {
 };
 
 module.exports = {
-  messagesResolvers
+  resolvers
 }

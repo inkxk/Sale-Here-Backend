@@ -5,6 +5,7 @@ const SenderSchema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
 });
 
@@ -12,6 +13,7 @@ const MessagesSchema = new Schema({
   id: {
     type: String,
     required: true,
+    unique: true,
   },
   body: {
     type: String,
