@@ -1,7 +1,7 @@
 {
   "name": "proxumer-exam-backend",
   "version": "1.0.0",
-  "description": "Have fun!",
+  "description": "Have fun! Thanks!!",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node --env-file=.env index.js",

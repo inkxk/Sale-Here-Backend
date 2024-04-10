@@ -1,31 +1,31 @@
 const mongoose = require("mongoose");
- 
+
 async function connectDB() {
-    const url = process.env.MONGO_ENDPOINT;
-    
-    try {
-        await mongoose.connect(url, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-    } catch (err) {
-        console.error(err.message);
-        process.exit(1);
-    }
+  const url = process.env.MONGO_ENDPOINT;
 
-    const dbConnection = mongoose.connection;
-
-    dbConnection.once("open", (_) => {
-        console.log(`Database connected: ${url}`);
+  try {
+    await mongoose.connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
-    
-    dbConnection.on("error", (err) => {
-        console.error(`connection error: ${err}`);
-    });
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
 
-    return;
+  const dbConnection = mongoose.connection;
+
+  dbConnection.once("open", (_) => {
+    console.log(`Database connected: ${url}`);
+  });
+
+  dbConnection.on("error", (err) => {
+    console.error(`connection error: ${err}`);
+  });
+
+  return;
 }
 
 module.exports = {
-    connectDB
+  connectDB,
 };
