@@ -1,0 +1,55 @@
+const { ApolloServer, gql } = require('apollo-server');
+const { typeDefs } = require('./graphql/typedefs');
+const { resolvers } = require('./graphql/resolvers');
+const { connectDB } = require('./config/db');
+const { createTestClient } = require('apollo-server-testing');
+
+const mockGetDescription = jest.fn();
+
+describe('Apollo Server', () => {
+  let server;
+
+  beforeAll(async () => {
+    await connectDB();
+    server = new ApolloServer({
+      typeDefs: gql`
+        ${typeDefs}
+      `,
+      resolvers,
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+    });
+
+  afterAll(async () => {
+    await server.stop();
+  });
+
+  it('should start the Apollo server successfully', async () => {
+    const { url } = await server.listen();
+
+    expect(url).toBeDefined();
+
+    console.log(`Server ready at ${url}`);
+  });
+
+  it('should respond to a GraphQL query', async () => {
+    const { query } = createTestClient(server);
+
+    const GET_USERS = gql`
+      query {
+        getUsers {
+          id
+          name
+        }
+      }
+    `;
+
+    const res = await query({ query: GET_USERS });
+
+    expect(res).toBeDefined();
+    expect(res.errors).toBeUndefined();
+  });
+});

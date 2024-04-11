@@ -7,7 +7,7 @@ const resolvers = {
     messages: (parent, { roomId }) => {
       return Messages.find({ roomId: roomId })
         .then (messages => {
-          console.log(messages);
+          console.log("queryMessages result:", messages);
           return messages;
         })
         .catch (error => {

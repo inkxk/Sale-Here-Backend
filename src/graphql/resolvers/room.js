@@ -6,7 +6,7 @@ const resolvers = {
     createRoom: (parent, { roomName }) => {			
       const roomObject = new Rooms({
         id: uuidv4(),
-        room_name: roomName
+        roomName: roomName
       })
 
       return roomObject.save()
