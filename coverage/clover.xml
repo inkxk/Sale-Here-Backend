@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1712834512803" clover="3.2.0">
-  <project timestamp="1712834512803" name="All files">
-    <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="21" coveredelements="21" complexity="0" loc="18" ncloc="18" packages="2" files="2" classes="2"/>
+<coverage generated="1712849447443" clover="3.2.0">
+  <project timestamp="1712849447443" name="All files">
+    <metrics statements="34" coveredstatements="34" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="37" coveredelements="37" complexity="0" loc="34" ncloc="34" packages="3" files="5" classes="5"/>
     <package name="config">
       <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="db.js" path="/Users/inkxk/Sale-Here-Backend/src/config/db.js">
@@ -22,7 +22,15 @@
       </file>
     </package>
     <package name="graphql">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="resolvers.js" path="/Users/inkxk/Sale-Here-Backend/src/graphql/resolvers.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
       <file name="typedefs.js" path="/Users/inkxk/Sale-Here-Backend/src/graphql/typedefs.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -30,6 +38,26 @@
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="model">
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="messages.js" path="/Users/inkxk/Sale-Here-Backend/src/model/messages.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+      </file>
+      <file name="rooms.js" path="/Users/inkxk/Sale-Here-Backend/src/model/rooms.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
       </file>
     </package>
   </project>

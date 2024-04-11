@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for graphql/typedefs.js</title>
+    <title>Code coverage report for graphql/resolvers.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">graphql</a> typedefs.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">graphql</a> resolvers.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -81,14 +81,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { fileLoader, mergeTypes } = require("merge-graphql-schemas");
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { fileLoader, mergeResolvers } = require("merge-graphql-schemas");
 const path = require("path");
 &nbsp;
-const typesArray = fileLoader(path.join(__dirname, "./schema"));
-const typeDefs = mergeTypes(typesArray, { all: true });
+const resolversArray = fileLoader(path.join(__dirname, "./resolvers"));
+const resolvers = mergeResolvers(resolversArray);
 &nbsp;
 module.exports = {
-  typeDefs,
+  resolvers,
 };
 &nbsp;</pre></td></tr></table></pre>
 
