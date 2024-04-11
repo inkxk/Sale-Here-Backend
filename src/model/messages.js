@@ -5,7 +5,6 @@ const SenderSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
 });
 
@@ -27,6 +26,10 @@ const MessagesSchema = new Schema({
     type: SenderSchema,
     required: true,
   },
+  roomId: {
+    type: String,
+    required: true,
+  }
 });
 
 const Messages = mongoose.model("Messages", MessagesSchema);

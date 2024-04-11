@@ -3,6 +3,7 @@ type Message {
   body: String!
   image: String
   from: Sender!
+  roomId: String!
 }
 
 type VoidResponse {
@@ -10,11 +11,11 @@ type VoidResponse {
 }
 
 type Query {
-  messages(roomName: String!): [Message]
+  messages(roomId: String!): [Message]
 }
 
 type Mutation {
-  sendMessage(roomName: String!, message: String!): VoidResponse
+  sendMessage(body: String!, senderName: String!, roomId: String!): VoidResponse
 }
 
 type Subscription {

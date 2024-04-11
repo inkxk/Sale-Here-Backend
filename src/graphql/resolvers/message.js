@@ -1,27 +1,60 @@
-const set = require('lodash/set');
-const get = require('lodash/get');
-const uuid = require('uuid/v4');
-
-const mock = require('../../mock');
+const { v4: uuidv4 } = require('uuid');
+const { Messages } = require('../../model/messages');
+const { Rooms } = require('../../model/rooms');
 
 const resolvers = {
   Query: {
-    messages: (parent, { roomName }) => {
-      const msgs = get(mock, `rooms.${roomName}.messages`, []);
-      return msgs;
+    messages: (parent, { roomId }) => {
+      return Messages.find({ roomId: roomId })
+        .then (messages => {
+          console.log(messages);
+          return messages;
+        })
+        .catch (error => {
+          console.error("queryMessages error:", error)
+      });
     }
   },
   Mutation: {
-    sendMessage: (parent, { roomName, message }) => {
-      set(mock, `rooms.${roomName}`, {
-        messages: [
-          ...get(mock, `rooms.${roomName}.messages`, []),
-          { id: uuid(), body: message }
-        ]
+    sendMessage: async (parent, { body, senderName, roomId }) => {
+      const queryRoom = await Rooms.find({ id: roomId })
+        .then (room => {
+          return room
+        })
+        .catch (error => {
+          console.error("queryRoomId error:", error)
       });
-      return {
-        successful: true
-      };
+
+      if (queryRoom.length == 0) {
+        console.error("sendMessage error: room not found")
+        return {
+          successful: false
+        };
+      }
+
+      const messageObject = new Messages({
+        id: uuidv4(),
+        body: body,
+        image: '',
+        from: {
+          name: senderName
+        },
+        roomId: roomId
+      });
+
+      return messageObject.save()
+        .then ((result) => {
+          console.log("sendMessage result:", result);
+          return {
+            successful: true
+          };
+        })
+        .catch (error => {
+          console.error("sendMessage error:", error)
+          return {
+            successful: false
+          };
+      });
     }
   }
 };

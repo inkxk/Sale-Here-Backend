@@ -1,4 +1,4 @@
-const uuidv4 = require('uuid/v4');
+const { v4: uuidv4 } = require('uuid');
 const { Rooms } = require('../../model/rooms');
 
 const resolvers = {
@@ -6,7 +6,7 @@ const resolvers = {
     createRoom: (parent, { roomName }) => {			
       const roomObject = new Rooms({
         id: uuidv4(),
-        roomName: roomName
+        room_name: roomName
       })
 
       return roomObject.save()
