@@ -11,7 +11,7 @@ const resolvers = {
           return messages;
         })
         .catch (error => {
-          console.error("queryMessages error:", error)
+          console.log("queryMessages error:", error)
       });
     }
   },
@@ -22,11 +22,11 @@ const resolvers = {
           return room
         })
         .catch (error => {
-          console.error("queryRoomId error:", error)
+          console.log("queryRoomId error:", error)
       });
 
-      if (queryRoom.length == 0) {
-        console.error("sendMessage error: room not found")
+      if (queryRoom == undefined || queryRoom.length == 0) {
+        console.log("sendMessage error: room not found")
         return {
           successful: false
         };
@@ -50,7 +50,7 @@ const resolvers = {
           };
         })
         .catch (error => {
-          console.error("sendMessage error:", error)
+          console.log("sendMessage error:", error)
           return {
             successful: false
           };

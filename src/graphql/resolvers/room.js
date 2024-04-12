@@ -17,7 +17,7 @@ const resolvers = {
           };
         })
         .catch (err => {
-          console.error("createRoom error:", err)
+          console.log("createRoom error:", err)
           return {
             successful: false
           };
