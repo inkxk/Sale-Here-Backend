@@ -2,13 +2,14 @@ const { ApolloServer, gql } = require("apollo-server");
 const { connectDB } = require("./config/db");
 const { resolvers } = require("./graphql/resolvers");
 
-console.log = jest.fn();
+console.log = jest.fn()
 
 jest.mock("apollo-server", () => ({
   ApolloServer: jest.fn().mockReturnValue({
     listen: jest.fn().mockResolvedValue({ url: "http://localhost:4000" })
   }),
-  gql: jest.fn()
+  gql: jest.fn(),
+  PubSub: jest.fn(),
 }));
 
 jest.mock("./config/db", () => ({
