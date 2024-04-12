@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require("path");
 const { PubSub } = require("apollo-server");
 const { v4: uuidv4 } = require("uuid");
 const { Messages } = require("../../model/messages");
@@ -35,10 +37,17 @@ const resolvers = {
         };
       }
 
+      // import image
+      let imageContent = "";
+      fs.readdirSync(path.join(__dirname, "../../image/")).forEach(file => {
+        // encode image to base64
+        imageContent = fs.readFileSync(path.join(__dirname, `../../image/${file}`), {encoding: 'base64'});
+      });
+
       const messageObject = new Messages({
         id: uuidv4(),
         body: body,
-        image: "",
+        image: imageContent,
         from: {
           name: senderName
         },
