@@ -1,6 +1,9 @@
-const { v4: uuidv4 } = require('uuid');
-const { Messages } = require('../../model/messages');
-const { Rooms } = require('../../model/rooms');
+const { PubSub } = require("apollo-server");
+const { v4: uuidv4 } = require("uuid");
+const { Messages } = require("../../model/messages");
+const { Rooms } = require("../../model/rooms");
+
+const pubsub = new PubSub();
 
 const resolvers = {
   Query: {
@@ -35,7 +38,7 @@ const resolvers = {
       const messageObject = new Messages({
         id: uuidv4(),
         body: body,
-        image: '',
+        image: "",
         from: {
           name: senderName
         },
@@ -45,6 +48,12 @@ const resolvers = {
       return messageObject.save()
         .then ((result) => {
           console.log("sendMessage result:", result);
+
+          // publish message to subscriber
+          pubsub.publish("new_message", {
+            newMessage: messageObject
+          });
+
           return {
             successful: true
           };
@@ -56,6 +65,13 @@ const resolvers = {
           };
       });
     }
+  },
+  Subscription: {
+    newMessage: {
+      subscribe(parent, { roomName }) { 
+        return pubsub.asyncIterator("new_message") 
+      }
+    },
   }
 };
 

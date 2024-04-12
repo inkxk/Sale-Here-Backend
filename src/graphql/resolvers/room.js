@@ -1,5 +1,5 @@
-const { v4: uuidv4 } = require('uuid');
-const { Rooms } = require('../../model/rooms');
+const { v4: uuidv4 } = require("uuid");
+const { Rooms } = require("../../model/rooms");
 
 const resolvers = {
   Mutation: {

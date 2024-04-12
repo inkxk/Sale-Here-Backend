@@ -19,5 +19,5 @@ type Mutation {
 }
 
 type Subscription {
-  newMessage(roomName: String!): Message!
+  newMessage(roomId: String!): Message!
 }
